@@ -20,7 +20,7 @@ jobs:
   support-window:
     permissions:
       contents: write # for Git to git push
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'DefinitelyTyped/DefinitelyTyped' || github.repository == 'prajalg/DefinitelyTyped'
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2

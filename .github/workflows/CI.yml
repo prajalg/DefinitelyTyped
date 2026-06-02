@@ -24,7 +24,7 @@ concurrency:
 jobs:
   setup-matrix:
     runs-on: ubuntu-slim
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'DefinitelyTyped/DefinitelyTyped' || github.repository == 'prajalg/DefinitelyTyped'
 
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
@@ -54,7 +54,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'DefinitelyTyped/DefinitelyTyped' || github.repository == 'prajalg/DefinitelyTyped'
     needs: setup-matrix
 
     strategy:
@@ -126,7 +126,7 @@ jobs:
 
   dangerbot:
     runs-on: ubuntu-slim
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped' && github.event_name == 'pull_request'
+    if: (github.repository == 'DefinitelyTyped/DefinitelyTyped' || github.repository == 'prajalg/DefinitelyTyped') && github.event_name == 'pull_request'
 
     needs:
       - test
@@ -159,7 +159,7 @@ jobs:
 
   scripts:
     runs-on: ubuntu-slim
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'DefinitelyTyped/DefinitelyTyped' || github.repository == 'prajalg/DefinitelyTyped'
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
